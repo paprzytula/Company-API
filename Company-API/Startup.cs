@@ -1,5 +1,7 @@
+using AutoMapper;
 using Company_API.Contracts;
 using Company_API.Data;
+using Company_API.Mappings;
 using Company_API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,6 +47,9 @@ namespace Company_API
                     .AllowAnyHeader()
                     );
             });
+
+            services.AddAutoMapper(typeof(Maps));
+
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("0.0.1", new OpenApiInfo {
                     Title="Company API",
