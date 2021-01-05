@@ -8,10 +8,7 @@ namespace Company_API.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            :base(options)
-        {
-        }
+
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
@@ -19,7 +16,7 @@ namespace Company_API.Data
         public virtual DbSet<Skill> Skills { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Category>(entity =>
             {
@@ -95,12 +92,10 @@ namespace Company_API.Data
             });
 
 
-
-
-
-
-
-
+        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+: base(options)
+        {
         }
     }
 }

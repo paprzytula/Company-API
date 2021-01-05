@@ -9,20 +9,73 @@
             Endpoint used to interact with the Categories in the company's database
             </summary>
         </member>
+        <member name="M:Company_API.Controllers.CategoriesController.GetCategories">
+            <summary>
+            Get all Categories
+            </summary>
+            <returns>List of Categories</returns>
+        </member>
+        <member name="M:Company_API.Controllers.CategoriesController.GetCategory(System.Guid)">
+            <summary>
+            Get Category by Id
+            </summary>
+            <param name="id"></param>
+            <returns>A Category's record</returns>
+        </member>
+        <member name="M:Company_API.Controllers.CategoriesController.Create(Company_API.DTOs.CategoryCreateDTO)">
+            <summary>
+            Creates a Category
+            </summary>
+            <param name="categoryDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.CategoriesController.Update(System.Guid,Company_API.DTOs.CategoryUpdateDTO)">
+            <summary>
+            Updates a Category by id
+            </summary>
+            <param name="id"></param>
+            <param name="categoryDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.CategoriesController.Delete(System.Guid)">
+            <summary>
+            Deletes a Category by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Company_API.Controllers.DepartmentsController">
             <summary>
             Endpoint used to interact with the Departments in the company's database
             </summary>
+        </member>
+        <member name="M:Company_API.Controllers.DepartmentsController.GetDepartments">
+            <summary>
+            Get all Departments
+            </summary>
+            <returns>List of Departments</returns>
         </member>
         <member name="T:Company_API.Controllers.EmployeesController">
             <summary>
             Endpoint used to interact with the Employees in the company's database
             </summary>
         </member>
+        <member name="M:Company_API.Controllers.EmployeesController.GetEmployees">
+            <summary>
+            Get all Employees
+            </summary>
+            <returns>List of Employees</returns>
+        </member>
         <member name="T:Company_API.Controllers.EmployeesSkillsController">
             <summary>
             Endpoint used to interact with the Employees Skills in the company's database
             </summary>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeesSkillsController.GetEmployeesSkills">
+            <summary>
+            Get all Employees Skills
+            </summary>
+            <returns>List of Employees Skills</returns>
         </member>
         <member name="M:Company_API.Controllers.HomeController.Get">
             <summary>
@@ -41,6 +94,12 @@
             <summary>
             Endpoint used to interact with the Skills in the company's database
             </summary>
+        </member>
+        <member name="M:Company_API.Controllers.SkillsController.GetSkills">
+            <summary>
+            Get all Skills
+            </summary>
+            <returns>List of Skills</returns>
         </member>
     </members>
 </doc>
