@@ -4,6 +4,26 @@
         <name>Company-API</name>
     </assembly>
     <members>
+        <member name="T:Company_API.Controllers.CategoriesController">
+            <summary>
+            Endpoint used to interact with the Categories in the company's database
+            </summary>
+        </member>
+        <member name="T:Company_API.Controllers.DepartmentsController">
+            <summary>
+            Endpoint used to interact with the Departments in the company's database
+            </summary>
+        </member>
+        <member name="T:Company_API.Controllers.EmployeesController">
+            <summary>
+            Endpoint used to interact with the Employees in the company's database
+            </summary>
+        </member>
+        <member name="T:Company_API.Controllers.EmployeesSkillsController">
+            <summary>
+            Endpoint used to interact with the Employees Skills in the company's database
+            </summary>
+        </member>
         <member name="M:Company_API.Controllers.HomeController.Get">
             <summary>
             Gets Values
@@ -16,6 +36,11 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:Company_API.Controllers.SkillsController">
+            <summary>
+            Endpoint used to interact with the Skills in the company's database
+            </summary>
         </member>
     </members>
 </doc>
