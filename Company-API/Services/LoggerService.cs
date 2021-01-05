@@ -9,7 +9,7 @@ namespace Company_API.Services
 {
     public class LoggerService : ILoggerService
     {
-        public static ILogger logger = LogManager.GetCurrentClassLogger();
+        static readonly ILogger logger = LogManager.GetCurrentClassLogger();
         public void LogDebug(string message)
         {
             logger.Debug(message);        }

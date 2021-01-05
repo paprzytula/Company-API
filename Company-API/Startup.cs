@@ -47,7 +47,7 @@ namespace Company_API
                     .AllowAnyHeader()
                     );
             });
-
+            
             services.AddAutoMapper(typeof(Maps));
 
             services.AddSwaggerGen(c => {
@@ -62,7 +62,6 @@ namespace Company_API
             });
 
             services.AddSingleton<ILoggerService, LoggerService>();
-
             services.AddControllers();
         }
 
@@ -88,7 +87,7 @@ namespace Company_API
                 c.RoutePrefix = "";
             });
 
-
+            
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
             app.UseRouting();
