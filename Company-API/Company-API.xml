@@ -55,6 +55,35 @@
             </summary>
             <returns>List of Departments</returns>
         </member>
+        <member name="M:Company_API.Controllers.DepartmentsController.GetDepartment(System.Guid)">
+            <summary>
+            Get Department by Id
+            </summary>
+            <param name="id"></param>
+            <returns>A Department's record</returns>
+        </member>
+        <member name="M:Company_API.Controllers.DepartmentsController.Create(Company_API.DTOs.DepartmentCreateDTO)">
+            <summary>
+            Creates a Department
+            </summary>
+            <param name="departmentDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.DepartmentsController.Update(System.Guid,Company_API.DTOs.DepartmentUpdateDTO)">
+            <summary>
+            Updates a Department by id
+            </summary>
+            <param name="id"></param>
+            <param name="departmentDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.DepartmentsController.Delete(System.Guid)">
+            <summary>
+            Deletes a Department by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Company_API.Controllers.EmployeesController">
             <summary>
             Endpoint used to interact with the Employees in the company's database
@@ -66,16 +95,74 @@
             </summary>
             <returns>List of Employees</returns>
         </member>
-        <member name="T:Company_API.Controllers.EmployeesSkillsController">
+        <member name="M:Company_API.Controllers.EmployeesController.GetEmployee(System.Guid)">
+            <summary>
+            Get Employee by Id
+            </summary>
+            <param name="id"></param>
+            <returns>A Employee's record</returns>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeesController.Create(Company_API.DTOs.EmployeeCreateDTO)">
+            <summary>
+            Creates a Employee
+            </summary>
+            <param name="employeeDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeesController.Update(System.Guid,Company_API.DTOs.EmployeeUpdateDTO)">
+            <summary>
+            Updates a Employee by id
+            </summary>
+            <param name="id"></param>
+            <param name="employeeDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeesController.Delete(System.Guid)">
+            <summary>
+            Deletes a Employee by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Company_API.Controllers.EmployeeSkillsController">
             <summary>
             Endpoint used to interact with the Employees Skills in the company's database
             </summary>
         </member>
-        <member name="M:Company_API.Controllers.EmployeesSkillsController.GetEmployeesSkills">
+        <member name="M:Company_API.Controllers.EmployeeSkillsController.GetEmployeeSkills">
             <summary>
             Get all Employees Skills
             </summary>
             <returns>List of Employees Skills</returns>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeeSkillsController.GetEmployeeSkill(System.Guid)">
+            <summary>
+            Get EmployeeSkill by Id
+            </summary>
+            <param name="id"></param>
+            <returns>A EmployeeSkill's record</returns>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeeSkillsController.Create(Company_API.DTOs.EmployeeSkillCreateDTO)">
+            <summary>
+            Creates a EmployeeSkill
+            </summary>
+            <param name="employeeSkillDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeeSkillsController.Update(System.Guid,Company_API.DTOs.EmployeeSkillUpdateDTO)">
+            <summary>
+            Updates a EmployeeSkill by id
+            </summary>
+            <param name="id"></param>
+            <param name="employeeSkillDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.EmployeeSkillsController.Delete(System.Guid)">
+            <summary>
+            Deletes a EmployeeSkill by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="M:Company_API.Controllers.HomeController.Get">
             <summary>
@@ -100,6 +187,42 @@
             Get all Skills
             </summary>
             <returns>List of Skills</returns>
+        </member>
+        <member name="M:Company_API.Controllers.SkillsController.GetSkill(System.Guid)">
+            <summary>
+            Get Skill by Id
+            </summary>
+            <param name="id"></param>
+            <returns>A Skill's record</returns>
+        </member>
+        <member name="M:Company_API.Controllers.SkillsController.Create(Company_API.DTOs.SkillCreateDTO)">
+            <summary>
+            Creates a Skill
+            </summary>
+            <param name="skillDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.SkillsController.Update(System.Guid,Company_API.DTOs.SkillUpdateDTO)">
+            <summary>
+            Updates a Skill by id
+            </summary>
+            <param name="id"></param>
+            <param name="skillDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.SkillsController.Delete(System.Guid)">
+            <summary>
+            Deletes a Skill by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Services.EmployeeSkillRepository.IsExists(System.Guid)">
+            <summary>
+            Obsolete function since 2 Guids are necessary. Use overloaded version with 2 parameters instead.
+            </summary>
+            <param name="id"></param>
+            <returns>null</returns>
         </member>
     </members>
 </doc>

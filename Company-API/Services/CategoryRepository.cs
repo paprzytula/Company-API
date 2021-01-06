@@ -50,7 +50,7 @@ namespace Company_API.Services
             return changes > 0;
         }
 
-        public async Task<bool> isExists(Guid id)
+        public async Task<bool> IsExists(Guid id)
         {
             return await _db.Categories.AnyAsync(q => q.IdCategory == id);
         }

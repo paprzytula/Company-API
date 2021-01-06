@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Company_API.Contracts
 {
-    public interface IEmployeesSkillRepository : IRepositoryBase<EmployeesSkill>
+    public interface IEmployeeSkillRepository : IRepositoryBase<EmployeeSkill>
     {
         
     }

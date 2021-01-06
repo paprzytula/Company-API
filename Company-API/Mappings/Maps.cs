@@ -16,9 +16,17 @@ namespace Company_API.Mappings
             CreateMap<Category, CategoryCreateDTO>().ReverseMap();
             CreateMap<Category, CategoryUpdateDTO>().ReverseMap();
             CreateMap<Department, DepartmentDTO>().ReverseMap();
+            CreateMap<Department, DepartmentCreateDTO>().ReverseMap();
+            CreateMap<Department, DepartmentUpdateDTO>().ReverseMap();
             CreateMap<Employee, EmployeeDTO>().ReverseMap();
-            CreateMap<EmployeesSkill, EmployeesSkillDTO>().ReverseMap();
+            CreateMap<Employee, EmployeeCreateDTO>().ReverseMap();
+            CreateMap<Employee, EmployeeUpdateDTO>().ReverseMap();
+            CreateMap<EmployeeSkill, EmployeeSkillDTO>().ReverseMap();
+            CreateMap<EmployeeSkill, EmployeeSkillCreateDTO>().ReverseMap();
+            CreateMap<EmployeeSkill, EmployeeSkillUpdateDTO>().ReverseMap();
             CreateMap<Skill, SkillDTO>().ReverseMap();
+            CreateMap<Skill, SkillCreateDTO>().ReverseMap();
+            CreateMap<Skill, SkillUpdateDTO>().ReverseMap();
 
         }
     }

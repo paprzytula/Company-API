@@ -65,7 +65,7 @@ namespace Company_API
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            services.AddScoped<IEmployeesSkillRepository, EmployeesSkillRepository>();
+            services.AddScoped<IEmployeeSkillRepository, EmployeeSkillRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
 
             services.AddControllers();

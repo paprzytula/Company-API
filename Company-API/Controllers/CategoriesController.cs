@@ -150,7 +150,7 @@ namespace Company_API.Controllers
                     return BadRequest();
                 }
 
-                var isExists = await _categoryRepository.isExists(id);
+                var isExists = await _categoryRepository.IsExists(id);
                 if (!isExists)
                 {
                     _logger.LogWarn($"Category Update failed: no Category with id: {id} was found.");
@@ -198,7 +198,7 @@ namespace Company_API.Controllers
                     _logger.LogWarn($"Category Delete failed: no  id was provided.");
                     return BadRequest();
                 }
-                var isExists = await _categoryRepository.isExists(id);
+                var isExists = await _categoryRepository.IsExists(id);
                 if (!isExists)
                 {
                     _logger.LogWarn($"Category Update failed: no Category with id: {id} was found.");

@@ -49,5 +49,10 @@ namespace Company_API.Services
             var changes = await _db.SaveChangesAsync();
             return changes > 0;
         }
+
+        public async Task<bool> IsExists(Guid id)
+        {
+            return await _db.Departments.AnyAsync(q => q.IdDepartment == id);
+        }
     }
 }
