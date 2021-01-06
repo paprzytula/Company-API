@@ -12,6 +12,7 @@ namespace Company_API.Contracts
         Task<IList<T>> FindAll();
         Task<T> FindById(Guid id);
         Task<bool> IsExists(Guid id);
+
         Task<bool> Create(T entity);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);

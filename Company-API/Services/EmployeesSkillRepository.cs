@@ -60,9 +60,10 @@ namespace Company_API.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns>null</returns>
-        public  Task<bool> IsExists(Guid id)
+        public Task<bool> IsExists(Guid id)
         {
             return null;
         }
+
     }
 }

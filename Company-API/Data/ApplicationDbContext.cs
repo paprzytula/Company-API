@@ -31,6 +31,7 @@ namespace Company_API.Data
             builder.ApplyConfiguration(new ProjectConfiguration());
             builder.ApplyConfiguration(new EmployeeProjectConfiguration());
         }
+        public DbSet<Company_API.Data.Entities.EmployeeProject> EmployeeProject { get; set; }
 
     }
 }

@@ -8,6 +8,6 @@ namespace Company_API.Contracts
 {
     public interface IEmployeeSkillRepository : IRepositoryBase<EmployeeSkill>
     {
-        
+        Task<bool> IsExists(Guid emp, Guid skill);
     }
 }

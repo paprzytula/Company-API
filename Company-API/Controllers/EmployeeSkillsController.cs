@@ -56,26 +56,28 @@ namespace Company_API.Controllers
         /// <summary>
         /// Get EmployeeSkill by Id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="emp"></param>
+        /// <param name="skil"></param>
         /// <returns>A EmployeeSkill's record</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> GetEmployeeSkill(Guid id)
+        public async Task<IActionResult> GetEmployeeSkill(Guid emp, Guid skil)
         {
+            
             try
             {
-                _logger.LogInfo($"Attempted to get a EmployeeSkill with id: {id}");
-                var employeeSkill = await _employeeSkillRepository.FindById(id);
-                if (employeeSkill == null)
+                _logger.LogInfo($"Attempted to get an EmployeeSkill with id: {emp} and {skil}");
+                var employeeSkill = await _employeeSkillRepository.IsExists(emp, skil);
+                if (employeeSkill)
                 {
-                    _logger.LogWarn($"EmployeeSkill with id: {id} was not found.");
+                    _logger.LogWarn($"Employee Skill with Employee id:{emp} and Skill: {skil} was not found.");
                     return NotFound();
                 }
                 var response = _mapper.Map<EmployeeSkillDTO>(employeeSkill);
-                _logger.LogInfo($"Successfully got a EmployeeSkill with id: {id}");
+                _logger.LogInfo($"Successfully got an Employee Skill with id: {emp} and {skil}");
                 return Ok(response);
             }
             catch (Exception e)
