@@ -28,6 +28,7 @@ namespace Company_API.Data
             builder.ApplyConfiguration(new EmployeeSkillConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new SkillConfiguration());
+            builder.ApplyConfiguration(new ProjectConfiguration());
             builder.ApplyConfiguration(new EmployeeProjectConfiguration());
         }
 

@@ -71,6 +71,18 @@ namespace Company_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    IdProject = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.IdProject);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -181,10 +193,11 @@ namespace Company_API.Migrations
                 columns: table => new
                 {
                     IdSkill = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdEmployee = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdCategory = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdCategory = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Answer = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -207,9 +220,7 @@ namespace Company_API.Migrations
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateOfEmployment = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdDepartment = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeSkillIdEmployee = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    EmployeeSkillIdSkill = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    IdDepartment = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -219,6 +230,30 @@ namespace Company_API.Migrations
                         column: x => x.IdDepartment,
                         principalTable: "Departments",
                         principalColumn: "IdDepartment",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmployeeProject",
+                columns: table => new
+                {
+                    IdProject = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdEmployee = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeProject", x => new { x.IdEmployee, x.IdProject });
+                    table.ForeignKey(
+                        name: "FK_EmployeeProject_Employees_IdEmployee",
+                        column: x => x.IdEmployee,
+                        principalTable: "Employees",
+                        principalColumn: "IdEmployee",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EmployeeProject_Projects_IdProject",
+                        column: x => x.IdProject,
+                        principalTable: "Projects",
+                        principalColumn: "IdProject",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -233,14 +268,14 @@ namespace Company_API.Migrations
                 {
                     table.PrimaryKey("PK_EmployeeSkills", x => new { x.IdEmployee, x.IdSkill });
                     table.ForeignKey(
-                        name: "FK_EmployeeSkills_Employees_IdSkill",
-                        column: x => x.IdSkill,
+                        name: "FK_EmployeeSkills_Employees_IdEmployee",
+                        column: x => x.IdEmployee,
                         principalTable: "Employees",
                         principalColumn: "IdEmployee",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EmployeeSkills_Skills_IdEmployee",
-                        column: x => x.IdEmployee,
+                        name: "FK_EmployeeSkills_Skills_IdSkill",
+                        column: x => x.IdSkill,
                         principalTable: "Skills",
                         principalColumn: "IdSkill",
                         onDelete: ReferentialAction.Cascade);
@@ -286,9 +321,9 @@ namespace Company_API.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_EmployeeSkillIdEmployee_EmployeeSkillIdSkill",
-                table: "Employees",
-                columns: new[] { "EmployeeSkillIdEmployee", "EmployeeSkillIdSkill" });
+                name: "IX_EmployeeProject_IdProject",
+                table: "EmployeeProject",
+                column: "IdProject");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_IdDepartment",
@@ -304,26 +339,10 @@ namespace Company_API.Migrations
                 name: "IX_Skills_IdCategory",
                 table: "Skills",
                 column: "IdCategory");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Employees_EmployeeSkills_EmployeeSkillIdEmployee_EmployeeSkillIdSkill",
-                table: "Employees",
-                columns: new[] { "EmployeeSkillIdEmployee", "EmployeeSkillIdSkill" },
-                principalTable: "EmployeeSkills",
-                principalColumns: new[] { "IdEmployee", "IdSkill" },
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Employees_Departments_IdDepartment",
-                table: "Employees");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Employees_EmployeeSkills_EmployeeSkillIdEmployee_EmployeeSkillIdSkill",
-                table: "Employees");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -340,22 +359,28 @@ namespace Company_API.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "EmployeeProject");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeSkills");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Departments");
-
-            migrationBuilder.DropTable(
-                name: "EmployeeSkills");
+                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Skills");
+
+            migrationBuilder.DropTable(
+                name: "Departments");
 
             migrationBuilder.DropTable(
                 name: "Categories");

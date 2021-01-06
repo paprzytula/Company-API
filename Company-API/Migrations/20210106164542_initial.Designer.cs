@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Company_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210106101157_initial")]
+    [Migration("20210106164542_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,12 +63,6 @@ namespace Company_API.Migrations
                     b.Property<DateTime>("DateOfEmployment")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("EmployeeSkillIdEmployee")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("EmployeeSkillIdSkill")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -86,8 +80,6 @@ namespace Company_API.Migrations
                     b.HasKey("IdEmployee");
 
                     b.HasIndex("IdDepartment");
-
-                    b.HasIndex("EmployeeSkillIdEmployee", "EmployeeSkillIdSkill");
 
                     b.ToTable("Employees");
                 });
@@ -107,6 +99,36 @@ namespace Company_API.Migrations
                     b.ToTable("EmployeeSkills");
                 });
 
+            modelBuilder.Entity("Company_API.Data.Entities.EmployeeProject", b =>
+                {
+                    b.Property<Guid>("IdEmployee")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IdProject")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("IdEmployee", "IdProject");
+
+                    b.HasIndex("IdProject");
+
+                    b.ToTable("EmployeeProject");
+                });
+
+            modelBuilder.Entity("Company_API.Data.Entities.Project", b =>
+                {
+                    b.Property<Guid>("IdProject")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdProject");
+
+                    b.ToTable("Projects");
+                });
+
             modelBuilder.Entity("Company_API.Data.Skill", b =>
                 {
                     b.Property<Guid>("IdSkill")
@@ -121,6 +143,9 @@ namespace Company_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("IdCategory")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IdEmployee")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Question")
@@ -342,23 +367,19 @@ namespace Company_API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Company_API.Data.EmployeeSkill", null)
-                        .WithMany("Employees")
-                        .HasForeignKey("EmployeeSkillIdEmployee", "EmployeeSkillIdSkill");
-
                     b.Navigation("Department");
                 });
 
             modelBuilder.Entity("Company_API.Data.EmployeeSkill", b =>
                 {
-                    b.HasOne("Company_API.Data.Skill", "Skill")
-                        .WithMany("Employees")
+                    b.HasOne("Company_API.Data.Employee", "Employee")
+                        .WithMany("Skills")
                         .HasForeignKey("IdEmployee")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Company_API.Data.Employee", "Employee")
-                        .WithMany("Skills")
+                    b.HasOne("Company_API.Data.Skill", "Skill")
+                        .WithMany("Employees")
                         .HasForeignKey("IdSkill")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -366,6 +387,25 @@ namespace Company_API.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("Company_API.Data.Entities.EmployeeProject", b =>
+                {
+                    b.HasOne("Company_API.Data.Employee", "Employee")
+                        .WithMany("EmployeeProjects")
+                        .HasForeignKey("IdEmployee")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Company_API.Data.Entities.Project", "Project")
+                        .WithMany("EmployeeProjects")
+                        .HasForeignKey("IdProject")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Company_API.Data.Skill", b =>
@@ -442,12 +482,14 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.Employee", b =>
                 {
+                    b.Navigation("EmployeeProjects");
+
                     b.Navigation("Skills");
                 });
 
-            modelBuilder.Entity("Company_API.Data.EmployeeSkill", b =>
+            modelBuilder.Entity("Company_API.Data.Entities.Project", b =>
                 {
-                    b.Navigation("Employees");
+                    b.Navigation("EmployeeProjects");
                 });
 
             modelBuilder.Entity("Company_API.Data.Skill", b =>
