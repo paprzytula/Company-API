@@ -135,11 +135,12 @@
             </summary>
             <returns>List of Employees Skills</returns>
         </member>
-        <member name="M:Company_API.Controllers.EmployeeSkillsController.GetEmployeeSkill(System.Guid)">
+        <member name="M:Company_API.Controllers.EmployeeSkillsController.GetEmployeeSkill(System.Guid,System.Guid)">
             <summary>
             Get EmployeeSkill by Id
             </summary>
-            <param name="id"></param>
+            <param name="emp"></param>
+            <param name="skil"></param>
             <returns>A EmployeeSkill's record</returns>
         </member>
         <member name="M:Company_API.Controllers.EmployeeSkillsController.Create(Company_API.DTOs.EmployeeSkillCreateDTO)">
@@ -215,6 +216,13 @@
             Deletes a Skill by id
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Company_API.Controllers.UsersController.Login(Company_API.DTOs.UserDTO)">
+            <summary>
+            User Login Endpoint
+            </summary>
+            <param name="userDTO"></param>
             <returns></returns>
         </member>
         <member name="M:Company_API.Services.EmployeeSkillRepository.IsExists(System.Guid)">

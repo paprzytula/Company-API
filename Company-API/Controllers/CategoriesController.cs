@@ -2,6 +2,7 @@
 using Company_API.Contracts;
 using Company_API.Data;
 using Company_API.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,12 +17,14 @@ namespace Company_API.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
+        
         public CategoriesController(ICategoryRepository categoryRepository,
             ILoggerService logger,
             IMapper mapper)
@@ -36,10 +39,12 @@ namespace Company_API.Controllers
         /// </summary>
         /// <returns>List of Categories</returns>
         [HttpGet]
+        [Authorize("Administrator, Employee")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetCategories()
         {
+            var location = GetControllerNames();
             try
             {
                 _logger.LogInfo("Attempted to get all Categories");
@@ -49,7 +54,7 @@ namespace Company_API.Controllers
             }
             catch (Exception e)
             {
-                return InternalError($"{e.Message} - {e.InnerException}");
+                return InternalError($"{location}: {e.Message} - {e.InnerException}");
 
 
             }
@@ -60,6 +65,7 @@ namespace Company_API.Controllers
         /// <param name="id"></param>
         /// <returns>A Category's record</returns>
         [HttpGet("{id}")]
+        [Authorize("Administrator, Employee")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -92,6 +98,7 @@ namespace Company_API.Controllers
         /// <param name="categoryDTO"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -134,6 +141,7 @@ namespace Company_API.Controllers
         /// <param name="categoryDTO"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -184,6 +192,7 @@ namespace Company_API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("id")]
+        [Authorize(Roles = "Administrator")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -225,6 +234,14 @@ namespace Company_API.Controllers
                 return InternalError($"{e.Message} - {e.InnerException}");
             }
         }
+
+        private string GetControllerNames()
+        {
+            var controller = ControllerContext.ActionDescriptor.ControllerName;
+            var description = ControllerContext.ActionDescriptor.ActionName;
+            return $"{controller} - {description}";
+        }
+
         private ObjectResult InternalError(string message)
         {
             _logger.LogError(message);
