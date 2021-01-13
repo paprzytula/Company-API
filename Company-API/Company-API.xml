@@ -218,6 +218,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Company_API.Controllers.UsersController.Register(Company_API.DTOs.UserDTO)">
+            <summary>
+            User Registration Endpoint
+            </summary>
+            <param name="userDTO"></param>
+            <returns></returns>
+        </member>
         <member name="M:Company_API.Controllers.UsersController.Login(Company_API.DTOs.UserDTO)">
             <summary>
             User Login Endpoint

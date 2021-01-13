@@ -11,7 +11,7 @@ namespace Company_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210106164542_initial")]
-    partial class initial
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

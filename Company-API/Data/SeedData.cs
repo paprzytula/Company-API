@@ -21,7 +21,7 @@ namespace Company_API.Data
             {
                 var user = new IdentityUser
                 {
-                    UserName = "admin",
+                    UserName = "admin@admin.com",
                     Email = "admin@admin.com"
                 };
                var result = await userManager.CreateAsync(user, "Test123.");
@@ -34,7 +34,7 @@ namespace Company_API.Data
             {
                 var user = new IdentityUser
                 {
-                    UserName = "user",
+                    UserName = "user@user.com",
                     Email = "user@user.com"
                 };
                 var result = await userManager.CreateAsync(user, "Test123.");
