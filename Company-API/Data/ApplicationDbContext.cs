@@ -1,4 +1,4 @@
-﻿using Company_API.Data.Configurations;
+﻿
 using Company_API.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -22,11 +22,7 @@ namespace Company_API.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new DepartmentConfiguration());
-            builder.ApplyConfiguration(new EmployeeConfiguration());
-            builder.ApplyConfiguration(new CategoryConfiguration());
-            builder.ApplyConfiguration(new SkillConfiguration());
-            builder.ApplyConfiguration(new ProjectConfiguration());
+
         }
 
 
