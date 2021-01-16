@@ -62,7 +62,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> GetSkill(Guid id)
+        public async Task<IActionResult> GetSkill(int id)
         {
             try
             {
@@ -135,7 +135,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(Guid id, [FromBody] SkillUpdateDTO skillDTO)
+        public async Task<IActionResult> Update(int id, [FromBody] SkillUpdateDTO skillDTO)
         {
 
             try
@@ -185,7 +185,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
 
             try

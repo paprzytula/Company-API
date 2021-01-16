@@ -136,7 +136,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(Guid id, [FromBody] DepartmentUpdateDTO departmentDTO)
+        public async Task<IActionResult> Update(int id, [FromBody] DepartmentUpdateDTO departmentDTO)
         {
 
             try
@@ -186,7 +186,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
 
             try

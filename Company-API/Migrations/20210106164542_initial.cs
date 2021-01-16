@@ -50,7 +50,7 @@ namespace Company_API.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    IdCategory = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdCategory = table.Column<int>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -62,7 +62,7 @@ namespace Company_API.Migrations
                 name: "Departments",
                 columns: table => new
                 {
-                    IdDepartment = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdDepartment = table.Column<int>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -74,7 +74,7 @@ namespace Company_API.Migrations
                 name: "Projects",
                 columns: table => new
                 {
-                    IdProject = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdProject = table.Column<int>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -192,9 +192,9 @@ namespace Company_API.Migrations
                 name: "Skills",
                 columns: table => new
                 {
-                    IdSkill = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdEmployee = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdCategory = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdSkill = table.Column<int>(type: "uniqueidentifier", nullable: false),
+                    IdEmployee = table.Column<int>(type: "uniqueidentifier", nullable: false),
+                    IdCategory = table.Column<int>(type: "uniqueidentifier", nullable: false),
                     Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -214,13 +214,13 @@ namespace Company_API.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    IdEmployee = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdEmployee = table.Column<int>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateOfEmployment = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdDepartment = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    IdDepartment = table.Column<int>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -237,8 +237,8 @@ namespace Company_API.Migrations
                 name: "EmployeeProject",
                 columns: table => new
                 {
-                    IdProject = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdEmployee = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    IdProject = table.Column<int>(type: "uniqueidentifier", nullable: false),
+                    IdEmployee = table.Column<int>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -261,8 +261,8 @@ namespace Company_API.Migrations
                 name: "EmployeeSkills",
                 columns: table => new
                 {
-                    IdEmployee = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdSkill = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    IdEmployee = table.Column<int>(type: "uniqueidentifier", nullable: false),
+                    IdSkill = table.Column<int>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {

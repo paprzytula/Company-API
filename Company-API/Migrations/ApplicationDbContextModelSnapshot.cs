@@ -21,7 +21,7 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.Category", b =>
                 {
-                    b.Property<Guid>("IdCategory")
+                    b.Property<int>("IdCategory")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -36,7 +36,7 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.Department", b =>
                 {
-                    b.Property<Guid>("IdDepartment")
+                    b.Property<int>("IdDepartment")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -51,7 +51,7 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.Employee", b =>
                 {
-                    b.Property<Guid>("IdEmployee")
+                    b.Property<int>("IdEmployee")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -65,7 +65,7 @@ namespace Company_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("IdDepartment")
+                    b.Property<int>("IdDepartment")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LastName")
@@ -84,10 +84,10 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.EmployeeSkill", b =>
                 {
-                    b.Property<Guid>("IdEmployee")
+                    b.Property<int>("IdEmployee")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdSkill")
+                    b.Property<int>("IdSkill")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("IdEmployee", "IdSkill");
@@ -99,10 +99,10 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.Entities.EmployeeProject", b =>
                 {
-                    b.Property<Guid>("IdEmployee")
+                    b.Property<int>("IdEmployee")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdProject")
+                    b.Property<int>("IdProject")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("IdEmployee", "IdProject");
@@ -114,7 +114,7 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.Entities.Project", b =>
                 {
-                    b.Property<Guid>("IdProject")
+                    b.Property<int>("IdProject")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -129,7 +129,7 @@ namespace Company_API.Migrations
 
             modelBuilder.Entity("Company_API.Data.Skill", b =>
                 {
-                    b.Property<Guid>("IdSkill")
+                    b.Property<int>("IdSkill")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -140,10 +140,10 @@ namespace Company_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("IdCategory")
+                    b.Property<int>("IdCategory")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdEmployee")
+                    b.Property<int>("IdEmployee")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Question")

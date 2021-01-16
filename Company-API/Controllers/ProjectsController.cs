@@ -58,7 +58,7 @@ namespace Company_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                project.Id = Guid.NewGuid();
+                project.Id = 1;
                 _context.Add(project);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -67,7 +67,7 @@ namespace Company_API.Controllers
         }
 
         // GET: Projects/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -87,9 +87,9 @@ namespace Company_API.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("IdProject,Name")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProject,Name")] Project project)
         {
-            if (id != project.IdProject)
+            if (id != project.Id)
             {
                 return NotFound();
             }
@@ -118,7 +118,7 @@ namespace Company_API.Controllers
         }
 
         // GET: Projects/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -126,7 +126,7 @@ namespace Company_API.Controllers
             }
 
             var project = await _context.Projects
-                .FirstOrDefaultAsync(m => m.IdProject == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (project == null)
             {
                 return NotFound();
@@ -138,7 +138,7 @@ namespace Company_API.Controllers
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var project = await _context.Projects.FindAsync(id);
             _context.Projects.Remove(project);
@@ -146,9 +146,9 @@ namespace Company_API.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProjectExists(Guid id)
+        private bool ProjectExists(int id)
         {
-            return _context.Projects.Any(e => e.IdProject == id);
+            return _context.Projects.Any(e => e.Id == id);
         }
     }
 }

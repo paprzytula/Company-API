@@ -34,9 +34,9 @@ namespace Company_UI.Pages.Service
             return false;
         }
 
-        public async Task<bool> Delete(string url, Guid id)
+        public async Task<bool> Delete(string url, int id)
         {
-            if (id == Guid.Empty)
+            if (id == int.Empty)
                 return false;
 
             var request = new HttpRequestMessage(HttpMethod.Delete, url + id);
@@ -47,7 +47,7 @@ namespace Company_UI.Pages.Service
             return false;
         }
 
-        public async Task<T> Get(string url, Guid id)
+        public async Task<T> Get(string url, int id)
         {
 
             var request = new HttpRequestMessage(HttpMethod.Get, url + id);
