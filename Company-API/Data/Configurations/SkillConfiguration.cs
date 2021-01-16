@@ -11,14 +11,14 @@ namespace Company_API.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Skill> builder)
         {
-            builder.HasKey(s => s.IdSkill);
+            builder.HasKey(s => s.Id);
             builder.Property(s => s.Description).IsRequired();
             builder.Property(s => s.Answer);
             builder.Property(s => s.Question).IsRequired();
             builder
                 .HasOne(s => s.Category)
                 .WithMany(s => s.Skills)
-                .HasForeignKey(s => s.IdCategory);
+                .HasForeignKey(s => s.Id);
         }
     }
 }

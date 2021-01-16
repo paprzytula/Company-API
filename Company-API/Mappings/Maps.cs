@@ -21,9 +21,6 @@ namespace Company_API.Mappings
             CreateMap<Employee, EmployeeDTO>().ReverseMap();
             CreateMap<Employee, EmployeeCreateDTO>().ReverseMap();
             CreateMap<Employee, EmployeeUpdateDTO>().ReverseMap();
-            CreateMap<EmployeeSkill, EmployeeSkillDTO>().ReverseMap();
-            CreateMap<EmployeeSkill, EmployeeSkillCreateDTO>().ReverseMap();
-            CreateMap<EmployeeSkill, EmployeeSkillUpdateDTO>().ReverseMap();
             CreateMap<Skill, SkillDTO>().ReverseMap();
             CreateMap<Skill, SkillCreateDTO>().ReverseMap();
             CreateMap<Skill, SkillUpdateDTO>().ReverseMap();

@@ -103,7 +103,7 @@ namespace Company_API.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProjectExists(project.IdProject))
+                    if (!ProjectExists(project.Id))
                     {
                         return NotFound();
                     }

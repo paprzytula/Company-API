@@ -36,8 +36,10 @@ namespace Company_UI.Pages.Service
 
         public async Task<bool> Delete(string url, int id)
         {
-            if (id == int.Empty)
+            if (id <0)
+            {
                 return false;
+            }
 
             var request = new HttpRequestMessage(HttpMethod.Delete, url + id);
             var client = _client.CreateClient();

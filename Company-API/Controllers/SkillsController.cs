@@ -142,7 +142,7 @@ namespace Company_API.Controllers
             {
                 _logger.LogInfo($"Skill Update attempted - id: {id}");
                 if (string.IsNullOrWhiteSpace(id.ToString()) || skillDTO == null
-                    || id != skillDTO.IdSkill)
+                    || id != skillDTO.Id)
                 {
                     _logger.LogWarn($"Empty Request was submitted.");
                     return BadRequest();

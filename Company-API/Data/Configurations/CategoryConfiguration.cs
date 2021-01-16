@@ -12,7 +12,7 @@ namespace Company_API.Data.Configurations
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder
-                .HasKey(c => c.IdCategory);
+                .HasKey(c => c.Id);
             builder
                 .Property(c => c.Name)
                 .IsRequired();

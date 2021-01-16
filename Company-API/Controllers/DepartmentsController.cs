@@ -143,7 +143,7 @@ namespace Company_API.Controllers
             {
                 _logger.LogInfo($"Department Update attempted - id: {id}");
                 if (string.IsNullOrWhiteSpace(id.ToString()) || departmentDTO == null
-                    || id != departmentDTO.IdDepartment)
+                    || id != departmentDTO.Id)
                 {
                     _logger.LogWarn($"Empty Request was submitted.");
                     return BadRequest();
