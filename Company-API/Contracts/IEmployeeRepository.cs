@@ -8,5 +8,7 @@ namespace Company_API.Contracts
 {
     public interface IEmployeeRepository : IRepositoryBase<Employee>
     {
+        Task<Employee> FindById(string id);
+        Task<bool> IsExists(string id);
     }
 }

@@ -26,7 +26,7 @@ namespace Company_API.Controllers
         }
 
         // GET: Projects/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -34,7 +34,7 @@ namespace Company_API.Controllers
             }
 
             var project = await _context.Projects
-                .FirstOrDefaultAsync(m => m.IdProject == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (project == null)
             {
                 return NotFound();
@@ -58,7 +58,7 @@ namespace Company_API.Controllers
         {
             if (ModelState.IsValid)
             {
-                project.IdProject = Guid.NewGuid();
+                project.Id = Guid.NewGuid();
                 _context.Add(project);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

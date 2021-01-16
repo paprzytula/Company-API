@@ -5,7 +5,7 @@ namespace Company_API.Data
 {
     public partial class Category
     {
-        public Guid IdCategory { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Skill> Skills { get; set; }
     }

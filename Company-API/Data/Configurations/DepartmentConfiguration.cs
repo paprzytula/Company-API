@@ -12,7 +12,7 @@ namespace Company_API.Data.Configurations
         public void Configure(EntityTypeBuilder<Department> builder)
         {
             builder 
-      .HasKey(d => d.IdDepartment);
+      .HasKey(d => d.Id);
             builder
                 .Property(d => d.Name)
                 .IsRequired();

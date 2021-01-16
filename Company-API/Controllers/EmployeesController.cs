@@ -63,7 +63,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> GetEmployee(Guid id)
+        public async Task<IActionResult> GetEmployee(string id)
         {
             try
             {
@@ -136,14 +136,14 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(Guid id, [FromBody] EmployeeUpdateDTO employeeDTO)
+        public async Task<IActionResult> Update(string id, [FromBody] EmployeeUpdateDTO employeeDTO)
         {
 
             try
             {
                 _logger.LogInfo($"Employee Update attempted - id: {id}");
                 if (string.IsNullOrWhiteSpace(id.ToString()) || employeeDTO == null
-                    || id != employeeDTO.IdEmployee)
+                    || id != employeeDTO.Id)
                 {
                     _logger.LogWarn($"Empty Request was submitted.");
                     return BadRequest();
@@ -186,7 +186,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(string id)
         {
 
             try

@@ -41,7 +41,7 @@ namespace Company_API
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<Employee>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddCors(o => {
@@ -81,7 +81,7 @@ namespace Company_API
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            services.AddScoped<IEmployeeSkillRepository, EmployeeSkillRepository>();
+
             services.AddScoped<ISkillRepository, SkillRepository>();
 
             services.AddControllers();
@@ -90,7 +90,7 @@ namespace Company_API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app,
             IWebHostEnvironment env,
-            UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+            UserManager<Employee> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {

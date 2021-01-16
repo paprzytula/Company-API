@@ -63,7 +63,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> GetDepartment(Guid id)
+        public async Task<IActionResult> GetDepartment(int id)
         {
             try
             {

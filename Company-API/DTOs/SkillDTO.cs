@@ -10,23 +10,23 @@ namespace Company_API.DTOs
     {
         public string Question { get; set; }
         public string Description { get; set; }
-        public Guid IdSkill { get; set; }
-        public Guid? IdCategory { get; set; }
+        public int Id { get; set; }
+        public CategoryDTO CategoryDTO { get; set; }
 
-        public virtual CategoryDTO IdCategoryNavigation { get; set; }
-        public virtual ICollection<EmployeeSkillDTO> EmployeeSkills { get; set; }
     }
     public class SkillCreateDTO
     {
         public string Question { get; set; }
         public string Description { get; set; }
-        public Guid? IdCategory { get; set; }
+        public CategoryDTO CategoryDTO { get; set; }
+
     }
     public class SkillUpdateDTO
     {
         public string Question { get; set; }
         public string Description { get; set; }
-        public Guid IdSkill { get; set; }
-        public Guid? IdCategory { get; set; }
+        public int Id { get; set; }
+        public CategoryDTO CategoryDTO { get; set; }
+
     }
 }

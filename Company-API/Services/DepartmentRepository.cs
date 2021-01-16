@@ -21,7 +21,7 @@ namespace Company_API.Services
             return await _db.Departments.ToListAsync();
         }
 
-        public async Task<Department> FindById(Guid id)
+        public async Task<Department> FindById(int id)
         {
             return await _db.Departments.FindAsync(id);
         }
@@ -50,9 +50,9 @@ namespace Company_API.Services
             return changes > 0;
         }
 
-        public async Task<bool> IsExists(Guid id)
+        public async Task<bool> IsExists(int id)
         {
-            return await _db.Departments.AnyAsync(q => q.IdDepartment == id);
+            return await _db.Departments.AnyAsync(q => q.Id == id);
         }
     }
 }

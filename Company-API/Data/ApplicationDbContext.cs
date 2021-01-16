@@ -17,7 +17,6 @@ namespace Company_API.Data
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<EmployeeSkill> EmployeeSkills { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -25,13 +24,11 @@ namespace Company_API.Data
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new DepartmentConfiguration());
             builder.ApplyConfiguration(new EmployeeConfiguration());
-            builder.ApplyConfiguration(new EmployeeSkillConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new SkillConfiguration());
             builder.ApplyConfiguration(new ProjectConfiguration());
-            builder.ApplyConfiguration(new EmployeeProjectConfiguration());
         }
-        public DbSet<Company_API.Data.Entities.EmployeeProject> EmployeeProject { get; set; }
+
 
     }
 }

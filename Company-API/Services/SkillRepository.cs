@@ -21,7 +21,7 @@ namespace Company_API.Services
             return await _db.Skills.ToListAsync();
         }
 
-        public async Task<Skill> FindById(Guid id)
+        public async Task<Skill> FindById(int id)
         {
             return await _db.Skills.FindAsync(id);
         }
@@ -50,9 +50,10 @@ namespace Company_API.Services
             return changes > 0;
         }
 
-        public async Task<bool> IsExists(Guid id)
+        public async Task<bool> IsExists(int id)
         {
-            return await _db.Skills.AnyAsync(q => q.IdSkill == id);
+            return await _db.Skills.AnyAsync(q => q.Id == id);
         }
+
     }
 }

@@ -40,13 +40,13 @@ namespace Company_API.Controllers
         /// <returns></returns>
         [Route("register")]
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Register([FromBody] EmployeeDTO employeeDTO)
         {
             var location = GetControllerActionNames();
             try
             {
-                var username = userDTO.EmailAddress;
-                var password = userDTO.Password;
+                var username = employeeDTO.Email;
+                var password = employeeDTO.PasswordHash;
                 _logger.LogInfo($"{location}: Registration Attempt for {username}");
                 var user = new IdentityUser { Email = username, UserName = username };
                 var result = await userManager.CreateAsync(user, password);
@@ -70,18 +70,18 @@ namespace Company_API.Controllers
         /// <summary>
         /// User Login Endpoint
         /// </summary>
-        /// <param name="userDTO"></param>
+        /// <param name="employeeDTO"></param>
         /// <returns></returns>
         [Route("login")]
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
+        public async Task<IActionResult> Login([FromBody] EmployeeDTO employeeDTO)
         {
             var location = GetControllerActionNames();
             try
             {
-                var username = userDTO.EmailAddress;
-                var password = userDTO.Password;
+                var username = employeeDTO.Email;
+                var password = employeeDTO.PasswordHash;
                 _logger.LogInfo($"{location}: Login Attempt from user {username}");
                 var result = await signInManager.PasswordSignInAsync(username, password, false, false);
                 if (result.Succeeded)
@@ -92,7 +92,7 @@ namespace Company_API.Controllers
                     return Ok(new { token = tokenString});
                 }
                 _logger.LogInfo($"{location}: {username} Not Authenticated");
-            return Unauthorized(userDTO);
+            return Unauthorized(employeeDTO);
             }
             catch (Exception e)
             {

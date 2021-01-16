@@ -9,17 +9,17 @@ namespace Company_API.Data
     public static class SeedData
     {
 
-        public static async Task Seed(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task Seed(UserManager<Employee> userManager, RoleManager<IdentityRole> roleManager)
         {
           await  SeedRoles(roleManager);
          await   SeedUsers(userManager);
         }
 
-        private async static Task SeedUsers(UserManager<IdentityUser> userManager)
+        private async static Task SeedUsers(UserManager<Employee> userManager)
         {
             if(await userManager.FindByEmailAsync("admin@admin.com")==null)
             {
-                var user = new IdentityUser
+                var user = new Employee
                 {
                     UserName = "admin@admin.com",
                     Email = "admin@admin.com"
@@ -32,7 +32,7 @@ namespace Company_API.Data
             }
             if (await userManager.FindByEmailAsync("user@user.com") == null)
             {
-                var user = new IdentityUser
+                var user = new Employee
                 {
                     UserName = "user@user.com",
                     Email = "user@user.com"

@@ -70,7 +70,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<IActionResult> GetCategory(Guid id)
+        public async Task<IActionResult> GetCategory(int id)
         {
             try
             {
@@ -145,14 +145,14 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(Guid id, [FromBody] CategoryUpdateDTO categoryDTO)
+        public async Task<IActionResult> Update(int id, [FromBody] CategoryUpdateDTO categoryDTO)
         {
 
             try
             {
                 _logger.LogInfo($"Category Update attempted - id: {id}");
                 if (string.IsNullOrWhiteSpace(id.ToString()) || categoryDTO == null
-                    || id != categoryDTO.IdCategory)
+                    || id != categoryDTO.Id)
                 {
                     _logger.LogWarn($"Empty Request was submitted.");
                     return BadRequest();
@@ -196,7 +196,7 @@ namespace Company_API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
 
             try

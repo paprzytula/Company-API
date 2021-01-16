@@ -12,11 +12,11 @@ namespace Company_API.Data.Configurations
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
             builder 
-                .HasKey(e => e.IdEmployee);
+                .HasKey(e => e.Id);
             builder
                 .HasOne(e => e.Department)
                 .WithMany(e => e.Employees)
-                .HasForeignKey(e => e.IdDepartment);
+                .HasForeignKey(e => e.Id);
             builder 
                 .Property(e => e.DateOfBirth)
                 .IsRequired();

@@ -7,8 +7,8 @@ namespace Company_API.Data.Entities
 {
     public partial class Project
     {
-        public Guid IdProject { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<EmployeeProject> EmployeeProjects { get; set; }
+        public  ICollection<Employee> Employees { get; set; }
     }
 }

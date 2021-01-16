@@ -8,7 +8,7 @@ namespace Company_API.DTOs
 {
     public class DepartmentDTO
     {
-        public Guid IdDepartment { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<EmployeeDTO> Employees { get; set; }
@@ -19,7 +19,7 @@ namespace Company_API.DTOs
     }
         public class DepartmentUpdateDTO
     {
-        public Guid IdDepartment { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
